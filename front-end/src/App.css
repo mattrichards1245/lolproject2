@@ -1,5 +1,60 @@
-#root {
+#root,
+body {
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
+p,
+h1,
+h2,
+h4 {
+  color: white;
+}
+body {
+  background-color: #181341;
+}
+.profile {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-flow: nowrap;
+  flex: auto;
+  flex-direction: row;
+
+  margin: 12px auto;
+  max-width: 65vw;
+  background-color: #251d61;
+}
+#root,
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile .profilePic {
+  margin: 0 30px;
+}
+.profile .notThePicture {
+  margin: 0 30px;
+}
+
+header {
+  background: url("./Kled_0.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-color: #191341;
+  background-blend-mode: overlay;
+  color: white;
+  width: 100%;
+  height: 400px;
+}
+.divider {
+  width: 90%;
+  border-bottom: 2px solid white;
+}
+
+header h1 {
+  font-size: 80px;
+}
+
 /*# sourceMappingURL=App.css.map */

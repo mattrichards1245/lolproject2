@@ -33,12 +33,15 @@ dataFile[RonaldGlover] = "RGData.txt";
 matchListFile[Chris] = "CRMatchList.txt";
 winsFile[Chris] = "CRWins.txt";
 dataFile[Chris] = "CRData.txt";
+matchListFile[Max] = "MXMatchList.txt";
+winsFile[Max] = "MXWins.txt";
+dataFile[Max] = "MXData.txt";
 function getThing(userID, x) {
   win[x] = [];
   matches[x] = [];
   pdata[x] = [];
 
-  const API_KEY = "RGAPI-e7daf823-4741-4baf-8067-bd9a566ff091";
+  const API_KEY = "";
   var matchID = "";
   let matchesURL =
     "https://americas.api.riotgames.com/lol/match/v5/matches/by-puuid/" +
@@ -162,9 +165,29 @@ getThing(RonaldGlover, 1);
 setTimeout(function () {
   console.log("Starting next get");
   getThing(Chris, 2);
+  setTimeout(function () {
+    console.log("Starting next get");
+    getThing(Max, 3);
+    // do stuff
+  }, 35000);
   // do stuff
 }, 30000);
 
+setTimeout(function () {
+  setInterval(function () {
+    getThing(RonaldGlover, 1);
+    setTimeout(function () {
+      console.log("Starting next get");
+      getThing(Chris, 2);
+      setTimeout(function () {
+        console.log("Starting next get");
+        getThing(Max, 3);
+        // do stuff
+      }, 35000);
+      // do stuff
+    }, 30000);
+  }, 120000);
+}, 120000);
 async function getRGMatches() {
   async function processLineByLine() {
     let fileStream = fs.createReadStream(`./RGMatchList.txt`);
@@ -295,7 +318,72 @@ async function getCRWins() {
 
   return await processLineByLine();
 }
+/////////////////////////////////////////////////////////////
+async function getMXMatches() {
+  async function processLineByLine() {
+    let fileStream = fs.createReadStream(`./MXMatchList.txt`);
+    let matches2 = [];
+    let rl = readline.createInterface({
+      input: fileStream,
+      crlfDelay: Infinity,
+    });
+    // Note: we use the crlfDelay option to recognize all instances of CR LF
+    // ('\r\n') in input.txt as a single line break.
 
+    for await (const line of rl) {
+      // Each line in input.txt will be successively available here as `line`.
+      matches2.push(line);
+    }
+    return matches2;
+  }
+
+  return processLineByLine();
+}
+
+async function getMXData() {
+  async function processLineByLine() {
+    let pdataa1 = [];
+    const fileStream = fs.createReadStream(`./MXData.txt`);
+    let rl = readline.createInterface({
+      input: fileStream,
+      crlfDelay: Infinity,
+    });
+    // Note: we use the crlfDelay option to recognize all instances of CR LF
+    // ('\r\n') in input.txt as a single line break.
+
+    for await (const line of rl) {
+      // Each line in input.txt will be successively available here as `line`.
+      pdataa1.push(line);
+    }
+    return pdataa1;
+  }
+
+  return processLineByLine();
+}
+async function getMXWins() {
+  async function processLineByLine() {
+    const fileStream = fs.createReadStream(`./MXWins.txt`);
+    let winHistory12 = [];
+    let rl = readline.createInterface({
+      input: fileStream,
+      crlfDelay: Infinity,
+    });
+    // Note: we use the crlfDelay option to recognize all instances of CR LF
+    // ('\r\n') in input.txt as a single line break.
+
+    for await (const line of rl) {
+      // Each line in input.txt will be successively available here as `line`.
+      if (line === "true") {
+        winHistory12.push("win");
+      } else if (line === "false") {
+        winHistory12.push("loss");
+      }
+    }
+    return winHistory12;
+  }
+
+  return await processLineByLine();
+}
 /////////////////////////////////////////////////////////
 app.listen(port, function (error) {
   if (error) {
@@ -313,5 +401,8 @@ app.get("/api", async (req, res) => {
     CrWins: await getCRWins(),
     CrMatches: await getCRMatches(),
     CrData: await getCRData(),
+    MxWins: await getMXWins(),
+    MxMatches: await getMXMatches(),
+    MxData: await getMXData(),
   });
 });

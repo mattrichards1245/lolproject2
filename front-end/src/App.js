@@ -43,9 +43,9 @@ function App() {
     var newArray = [];
     for (let i = 0; i < rWins.length; i++) {
       if (rWins[i] === "win") {
-        newArray.push("win ");
+        newArray.push("Win ");
       } else {
-        newArray.push("loss ");
+        newArray.push("Loss ");
       }
     }
     return newArray.map((victory) => <li>{victory}</li>);
@@ -54,9 +54,9 @@ function App() {
     var newArray2 = [];
     for (let i = 0; i < crWins.length; i++) {
       if (crWins[i] === "win") {
-        newArray2.push("win ");
+        newArray2.push("Win ");
       } else {
-        newArray2.push("loss ");
+        newArray2.push("Loss ");
       }
     }
     return newArray2.map((victory) => <li>{victory}</li>);
@@ -65,9 +65,9 @@ function App() {
     var newArray3 = [];
     for (let i = 0; i < mxWins.length; i++) {
       if (crWins[i] === "win") {
-        newArray3.push("win ");
+        newArray3.push("Win ");
       } else {
-        newArray3.push("loss ");
+        newArray3.push("Loss ");
       }
     }
     return newArray3.map((victory) => <li>{victory}</li>);
@@ -96,11 +96,11 @@ function App() {
             document.querySelector(`.matchHistory${x}`).style.visibility =
               "visible";
             for (let i = 0; i < document.querySelectorAll("li").length; i++) {
-              if (document.querySelectorAll("li")[i].innerText === "loss") {
+              if (document.querySelectorAll("li")[i].innerText === "Loss") {
                 document.querySelectorAll("li")[i].style.backgroundColor =
                   "blue";
               } else if (
-                document.querySelectorAll("li")[i].innerText === "win"
+                document.querySelectorAll("li")[i].innerText === "Win"
               ) {
                 document.querySelectorAll("li")[i].style.backgroundColor =
                   "red";
@@ -141,8 +141,7 @@ function App() {
                 </h2>
                 <p>
                   Wielding an understanding of a deep champion pool fit for one,{" "}
-                  {rData[0]} is one of the most fundamentally skilled players on
-                  the Rift.
+                  {rData[0]} is one of the players on the Rift.
                 </p>
                 <button className="matchHistoryButton1">
                   Show/Hide Match History
@@ -170,9 +169,12 @@ function App() {
                   Summoner Name:{crData[0]} | Level:{crData[2]}
                 </h2>
                 <p>
-                  Master of anything with paws and a tail, {crData[0]} is brings
+                  Master of anything with paws and a tail, {crData[0]} brings
                   his knowledge of all things of the jungle and stuff of that
-                  nature to do jungling and things of that nature.
+                  nature to do jungling and things of that nature.Always making
+                  sure everyone on the rift gets a share of his wealth, whenever
+                  he touched down. If he eats, everyone eats, and he's no Bella
+                  Hadid.
                 </p>
                 <button className="matchHistoryButton2">
                   Show/Hide Match History
@@ -199,9 +201,12 @@ function App() {
                   SummonerName:{mxData[0]} | Level:{mxData[2]}
                 </h2>
                 <p>
-                  Great minds reproduced over and over and over again over
-                  centuries to birth the one and only, {mxData[0]}. This is his
-                  world, and we are simply living in it.
+                  Motivated,determined,Mentally Untouchable.The creator gave{" "}
+                  {mxData[0]} life through abundance. Allowing the correct blend
+                  of souls to cross paths to share passion with one another that
+                  allowed human life to be conceived over and over and over
+                  again. Through it all with proper planning,placement,and
+                  correct space and time here he stands.
                 </p>
                 <button className="matchHistoryButton3">
                   Show/Hide Match History

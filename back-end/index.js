@@ -41,7 +41,7 @@ function getThing(userID, x) {
   matches[x] = [];
   pdata[x] = [];
 
-  const API_KEY = "";
+  const API_KEY = "RGAPI-bcddd47b-0557-4270-b563-f34eedbcdaa9";
   var matchID = "";
   let matchesURL =
     "https://americas.api.riotgames.com/lol/match/v5/matches/by-puuid/" +
